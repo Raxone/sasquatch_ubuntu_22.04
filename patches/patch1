@@ -1,0 +1,19 @@
+--- squashfs-tools/unsquashfs.c	2022-05-25 19:12:42.237609006 +0200
++++ squashfs-tools/unsquashfs.c	2022-05-25 18:34:59.752225950 +0200
+@@ -1833,6 +1833,8 @@
+ 
+     // CJH: Notify if endianess is different
+     if(swap)
++        
++        {
+         ERROR("Reading a different endian SQUASHFS filesystem on %s\n", source);
+ 
+ 	/*
+@@ -1843,7 +1845,7 @@
+ 	// CJH: swap detection already done generically above
+     //swap = sBlk_4.s_magic != SQUASHFS_MAGIC;
+ 	SQUASHFS_INSWAP_SUPER_BLOCK(&sBlk_4);
+-
++        }
+     /*
+
